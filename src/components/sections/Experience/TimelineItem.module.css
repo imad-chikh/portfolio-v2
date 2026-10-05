@@ -1,0 +1,268 @@
+.row {
+  display: grid;
+  grid-template-columns: 240px 48px 1fr;
+  grid-template-areas: 'when rail body';
+  column-gap: 24px;
+}
+
+/* ---- Year column ---- */
+.when {
+  grid-area: when;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 2px;
+}
+.year {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-year);
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  color: var(--color-ink);
+}
+.current .year {
+  color: var(--color-forest);
+}
+.end {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ---- Rail ---- */
+.rail {
+  grid-area: rail;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dot {
+  position: relative;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-top: 12px;
+  border-radius: 50%;
+  border: 3px solid var(--color-ink);
+  background: var(--color-cream);
+}
+.current .dot {
+  background: var(--color-lime);
+}
+.ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid var(--color-forest);
+  opacity: 0;
+  pointer-events: none;
+  animation: ring 1.8s ease-out infinite;
+}
+.line {
+  position: relative;
+  flex: 1;
+  width: 2px;
+  background: var(--color-sand-line);
+}
+.fill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-ink);
+}
+
+/* ---- Body ---- */
+.body {
+  grid-area: body;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 6px 0 64px;
+}
+.heading {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.badge {
+  position: relative;
+  overflow: hidden;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-ink);
+  color: var(--text-on-dark);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.badgeCurrent {
+  background: var(--color-lime);
+  color: var(--color-ink);
+  border: var(--border-strong);
+}
+.badgeLogo {
+  background: #fff;
+  border: var(--border-strong);
+}
+.logoImg {
+  object-fit: cover;
+}
+.titles {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'role chip'
+    'org org';
+  align-items: center;
+  gap: 6px 12px;
+  min-width: 0;
+}
+.role {
+  grid-area: role;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-role);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.chip {
+  grid-area: chip;
+  justify-self: start;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-sand);
+  white-space: nowrap;
+}
+.chipCurrent {
+  background: var(--color-lime);
+}
+.org {
+  grid-area: org;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-forest);
+}
+.location {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.desc {
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--text-body);
+  max-width: 640px;
+}
+.stack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ---- Entrance animation (pre-state only when JS is running) ---- */
+:global(html[data-js]) .fill {
+  height: 0%;
+  transition: height 1200ms var(--ease-out) 400ms;
+}
+:global(html[data-js]) .dot {
+  transform: scale(0);
+  transition: transform 650ms var(--ease-spring) 150ms;
+}
+:global(html[data-js]) .year {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out);
+}
+:global(html[data-js]) .body {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms var(--ease-out) 250ms,
+    transform 700ms var(--ease-out) 250ms;
+}
+:global(html[data-js]) .shown .fill {
+  height: 100%;
+}
+:global(html[data-js]) .shown .dot {
+  transform: scale(1);
+}
+:global(html[data-js]) .shown .year,
+:global(html[data-js]) .shown .body {
+  opacity: 1;
+  transform: none;
+}
+:global(html[data-js]) .settled .body {
+  transition: transform 300ms var(--ease-out);
+}
+:global(html[data-js]) .settled .body:hover {
+  transform: translateX(10px);
+}
+
+/* ---- Mobile: rail on the left, year above the body ---- */
+@media (max-width: 767px) {
+  .row {
+    grid-template-columns: 24px 1fr;
+    grid-template-areas:
+      'rail when'
+      'rail body';
+    column-gap: 16px;
+    row-gap: 8px;
+  }
+  .when {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+    padding-top: 0;
+  }
+  .end {
+    font-size: 11px;
+  }
+  .dot {
+    width: 20px;
+    height: 20px;
+    margin-top: 6px;
+  }
+  .body {
+    gap: 8px;
+    padding: 0 0 40px;
+  }
+  .heading {
+    gap: 12px;
+  }
+  .badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 15px;
+  }
+  .titles {
+    grid-template-areas:
+      'role role'
+      'org chip';
+    gap: 4px 8px;
+  }
+  .role {
+    line-height: 1.05;
+  }
+  .org {
+    font-size: 14px;
+  }
+  .chip {
+    font-size: 11px;
+    padding: 3px 9px;
+  }
+}

@@ -1,0 +1,65 @@
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 480 / 580;
+}
+
+.back,
+.photo {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+}
+.back {
+  background: var(--color-forest);
+  transform: rotate(-3deg);
+}
+.photo {
+  overflow: hidden;
+  border: var(--border-strong);
+  background: var(--color-sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img {
+  object-fit: cover;
+}
+.placeholder {
+  padding: 24px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.sticker {
+  position: absolute;
+  right: -28px;
+  top: 40px;
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  border: var(--border-strong);
+  background: var(--color-lime);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  transform: rotate(6deg);
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .frame {
+    aspect-ratio: auto;
+    height: 400px;
+    width: auto;
+    margin-inline: 6px;
+  }
+  .sticker {
+    right: -10px;
+    top: 20px;
+    padding: 8px 14px;
+    font-size: 16px;
+  }
+}

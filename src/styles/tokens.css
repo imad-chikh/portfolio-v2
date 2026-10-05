@@ -1,0 +1,126 @@
+/* ==========================================================================
+   DESIGN TOKENS — the single source of truth for theme & branding.
+   Rebrand the whole site by editing the values in this file only.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand palette ---------------------------------------------------- */
+  --color-ink: #14201a;          /* primary text, borders, dark surfaces   */
+  --color-forest: #1d5c43;       /* brand primary                          */
+  --color-forest-hover: #2a7556; /* hover state on forest surfaces         */
+  --color-forest-line: #4f8a70;  /* outlines on forest surfaces            */
+  --color-lime: #d6f36b;         /* brand accent                           */
+  --color-lime-soft: #e7f6a8;
+  --color-cream: #f6f3ea;        /* page background                        */
+  --color-sand: #ece8dc;         /* neutral card surface                   */
+  --color-sand-line: #d8d2c2;    /* timeline rail                          */
+
+  /* ---- Text --------------------------------------------------------------- */
+  --text-strong: var(--color-ink);
+  --text-body: #3d4640;
+  --text-muted: #5d6158;
+  --text-on-dark: #f6f3ea;
+  --text-on-dark-muted: #d9e6dd;
+  --text-on-dark-soft: #e6efe9;
+  --text-on-dark-label: #9fb0a5;
+  --text-on-forest-label: #b9cdc1;
+  --text-on-ink-muted: #c9d3cc;
+  --line-on-dark: #34423a;
+
+  /* ---- Typography --------------------------------------------------------- */
+  /* Font families are injected by next/font in src/app/fonts.ts */
+  --font-display: var(--font-bricolage), 'Bricolage Grotesque', sans-serif;
+  --font-body: var(--font-instrument), 'Instrument Sans', Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
+
+  /* Fluid type scale: clamp(mobile, fluid, desktop) — matches 390 / 1280 frames */
+  --fs-hero: clamp(3.625rem, 10.3vw, 8.25rem);      /* 58 → 132 */
+  --fs-contact: clamp(4rem, 11.7vw, 9.375rem);      /* 64 → 150 */
+  --fs-h2: clamp(2.75rem, 6.25vw, 5rem);            /* 44 → 80  */
+  --fs-case-title: clamp(2.75rem, 5.6vw, 4.5rem);   /* 44 → 72  */
+  --fs-project-hero: clamp(4.75rem, 11.7vw, 9.375rem); /* 76 → 150 */
+  --fs-project-num: clamp(2.75rem, 6.9vw, 5.5rem);  /* 44 → 88  */
+  --fs-sub-title: clamp(2.25rem, 4.4vw, 3.5rem);    /* 36 → 56  */
+  --fs-project-title: clamp(2.5rem, 5vw, 4rem);     /* 40 → 64  */
+  --fs-year: clamp(2.25rem, 5vw, 4rem);             /* 36 → 64  */
+  --fs-card-title: clamp(1.875rem, 3.75vw, 3rem);   /* 30 → 48  */
+  --fs-contact-card: clamp(1.75rem, 3.1vw, 2.5rem); /* 28 → 40  */
+  --fs-role: clamp(1.5rem, 2.8vw, 2.25rem);         /* 24 → 36  */
+  --fs-lead: clamp(1.125rem, 1.9vw, 1.5rem);        /* 18 → 24  */
+  --fs-intro: clamp(1rem, 1.6vw, 1.25rem);          /* 16 → 20  */
+  --fs-body: clamp(0.875rem, 1.33vw, 1.0625rem);    /* 14 → 17  */
+
+  /* ---- Layout ------------------------------------------------------------- */
+  --container-max: 1280px;
+  --gutter: clamp(20px, 6.25vw, 80px);
+  --section-y: clamp(64px, 9.4vw, 120px);
+
+  /* ---- Radii -------------------------------------------------------------- */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: clamp(24px, 2.5vw, 32px);
+  --radius-xl: clamp(28px, 2.8vw, 36px);
+  --radius-pill: 999px;
+
+  /* ---- Borders & shadows -------------------------------------------------- */
+  --border-strong: 2px solid var(--color-ink);
+  --shadow-lift: 0 8px 0 var(--color-ink);
+  --shadow-soft: 0 12px 24px -10px rgb(0 0 0 / 0.4);
+  --shadow-device: 0 24px 40px -20px rgb(20 32 26 / 0.5);
+
+  /* ---- Motion ------------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 200ms;
+  --dur-base: 250ms;
+  --dur-slow: 450ms;
+  --dur-sheet: 550ms;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 20px;
+  }
+}
+
+/* ==========================================================================
+   SURFACE TONES — reusable color combos for cards & panels.
+   Content files reference these by name ('forest' | 'lime' | 'sand' | 'ink'
+   | 'cream'), so adding/changing a tone never touches component code.
+   ========================================================================== */
+
+.tone-forest {
+  --tone-bg: var(--color-forest);
+  --tone-fg: var(--text-on-dark);
+  --tone-sub: var(--text-on-dark-muted);
+  --tone-accent-bg: var(--color-lime);
+  --tone-accent-fg: var(--color-ink);
+}
+.tone-lime {
+  --tone-bg: var(--color-lime);
+  --tone-fg: var(--color-ink);
+  --tone-sub: var(--text-body);
+  --tone-accent-bg: var(--color-ink);
+  --tone-accent-fg: var(--color-lime);
+}
+.tone-sand {
+  --tone-bg: var(--color-sand);
+  --tone-fg: var(--color-ink);
+  --tone-sub: var(--text-body);
+  --tone-accent-bg: var(--color-ink);
+  --tone-accent-fg: var(--color-lime);
+}
+.tone-ink {
+  --tone-bg: var(--color-ink);
+  --tone-fg: var(--text-on-dark);
+  --tone-sub: var(--text-on-ink-muted);
+  --tone-accent-bg: var(--color-lime);
+  --tone-accent-fg: var(--color-ink);
+}
+.tone-cream {
+  --tone-bg: var(--color-cream);
+  --tone-fg: var(--color-ink);
+  --tone-sub: var(--text-body);
+  --tone-accent-bg: var(--color-ink);
+  --tone-accent-fg: var(--color-lime);
+}

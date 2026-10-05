@@ -1,0 +1,96 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-block: var(--section-y);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.prev,
+.next {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: var(--border-strong);
+  font-size: 20px;
+  cursor: pointer;
+}
+.prev {
+  background: transparent;
+  color: var(--color-ink);
+  transition:
+    background var(--dur-fast),
+    color var(--dur-fast);
+}
+.prev:hover {
+  background: var(--color-ink);
+  color: var(--color-lime);
+}
+.next {
+  background: var(--color-ink);
+  color: var(--color-lime);
+  transition: transform var(--dur-fast);
+}
+.next:hover {
+  transform: translateX(3px);
+}
+
+.swipe {
+  display: none;
+  flex: none;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  padding-bottom: 6px;
+}
+
+/* Full-bleed scroller whose first card aligns with the container edge */
+.track {
+  --edge: max(var(--gutter), calc((100% - var(--container-max)) / 2 + var(--gutter)));
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--edge);
+  padding: 8px var(--edge) 24px;
+  scrollbar-width: none;
+}
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .section {
+    gap: 20px;
+    padding-bottom: 48px;
+  }
+  .head {
+    gap: 12px;
+  }
+  .head h2 {
+    font-size: min(var(--fs-h2), 11vw);
+    white-space: nowrap;
+  }
+  .arrows {
+    display: none;
+  }
+  .swipe {
+    display: inline;
+  }
+  .track {
+    gap: 12px;
+    padding-block: 6px 16px;
+  }
+}

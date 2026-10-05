@@ -1,0 +1,39 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+.filled {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  background: var(--tone-accent-bg, var(--color-ink));
+  color: var(--tone-accent-fg, var(--color-lime));
+}
+.outline {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border: 1.5px solid var(--color-ink);
+}
+.mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 5px 12px;
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+
+@media (max-width: 767px) {
+  .filled {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+  .outline {
+    font-size: 12px;
+  }
+  .mono {
+    font-size: 11px;
+  }
+}

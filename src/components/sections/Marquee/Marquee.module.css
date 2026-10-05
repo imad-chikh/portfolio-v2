@@ -1,0 +1,46 @@
+.strip {
+  --size: 30px;
+  --gap: 28px;
+  background: var(--color-lime);
+  color: var(--color-ink);
+  overflow: hidden;
+  padding: 22px 0;
+  border-bottom: var(--border-strong);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--size);
+  letter-spacing: -0.02em;
+  animation: marquee 30s linear infinite;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap);
+  padding-right: var(--gap);
+}
+
+.dot {
+  display: inline-block;
+  width: calc(var(--size) * 0.35);
+  height: calc(var(--size) * 0.35);
+  border-radius: 50%;
+  background: var(--color-forest);
+}
+
+@media (max-width: 767px) {
+  .strip {
+    --size: 18px;
+    --gap: 16px;
+    padding: 14px 0;
+  }
+  .track {
+    animation-duration: 22s;
+  }
+}

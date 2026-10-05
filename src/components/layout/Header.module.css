@@ -1,0 +1,116 @@
+.header {
+  position: relative;
+  z-index: 10;
+  background: var(--color-forest);
+  color: var(--text-on-dark);
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 28px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: inherit;
+}
+.brand:hover {
+  color: inherit;
+}
+.name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.link {
+  color: var(--text-on-dark);
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  transition: background var(--dur-fast);
+}
+.link:hover {
+  color: var(--text-on-dark);
+  background: var(--color-forest-hover);
+}
+.cta {
+  color: var(--color-ink);
+  background: var(--color-lime);
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  transition: transform var(--dur-fast);
+}
+.cta:hover {
+  color: var(--color-ink);
+  transform: translateY(-2px);
+}
+
+.menuButton,
+.mobileMenu {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .bar {
+    padding-block: 20px;
+  }
+  .name,
+  .nav {
+    display: none;
+  }
+  .menuButton {
+    display: inline-flex;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 18px;
+    color: var(--text-on-dark);
+    background: transparent;
+    border: 1px solid var(--color-forest-line);
+    border-radius: var(--radius-pill);
+  }
+  .mobileMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px var(--gutter) 24px;
+    background: var(--color-forest);
+    border-bottom: 1px solid var(--color-forest-line);
+  }
+  .mobileMenuOpen {
+    display: flex;
+  }
+  .mobileLink {
+    color: var(--text-on-dark);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.03em;
+    padding: 8px 0;
+  }
+  .mobileLink:hover {
+    color: var(--color-lime);
+  }
+  .mobileCta {
+    margin-top: 12px;
+    text-align: center;
+    padding: 16px;
+    border-radius: var(--radius-pill);
+    background: var(--color-lime);
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+}

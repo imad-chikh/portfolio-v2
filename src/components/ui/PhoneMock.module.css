@@ -1,0 +1,25 @@
+.phone {
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 8px solid var(--color-ink);
+  border-radius: 36px;
+  background: repeating-linear-gradient(135deg, var(--color-cream) 0 8px, var(--color-sand) 8px 16px);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  box-shadow: var(--shadow-device);
+}
+.img {
+  object-fit: cover;
+}
+.icon {
+  position: relative;
+  overflow: hidden;
+  width: 44%;
+  aspect-ratio: 1;
+  border-radius: 22%;
+  box-shadow: 0 12px 24px -12px rgb(20 32 26 / 0.45);
+}

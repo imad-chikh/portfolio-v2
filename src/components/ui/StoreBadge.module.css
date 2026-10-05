@@ -1,0 +1,57 @@
+.badge {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px 10px 16px;
+  border-radius: 14px;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  transition: transform var(--dur-fast);
+}
+.badge:hover {
+  color: var(--color-ink);
+  transform: translateY(-2px);
+}
+.icon {
+  flex: none;
+  fill: var(--color-forest);
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.note {
+  font-size: 11px;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+.name {
+  font-size: 17px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.plain {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 20px;
+}
+
+@media (max-width: 767px) {
+  .badge {
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+  .note {
+    font-size: 10px;
+  }
+  .name {
+    font-size: 14px;
+  }
+}

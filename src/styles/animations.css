@@ -1,0 +1,46 @@
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Scroll reveal — only hides content once JS has flagged the document,
+   so the page is fully visible without JS. See <Reveal />. */
+html[data-js] [data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out);
+}
+html[data-js] [data-reveal][data-visible='true'] {
+  opacity: 1;
+  transform: none;
+}
+html[data-js] [data-reveal][data-instant='true'] {
+  transition: none;
+}

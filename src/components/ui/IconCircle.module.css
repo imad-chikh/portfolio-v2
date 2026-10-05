@@ -1,0 +1,19 @@
+.circle {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background: var(--tone-accent-bg, var(--color-ink));
+  color: var(--tone-accent-fg, var(--color-lime));
+}
+@media (max-width: 767px) {
+  .circle {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+}

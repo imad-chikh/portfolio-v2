@@ -1,0 +1,8 @@
+.dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--color-lime);
+  animation: pulse 1.6s ease-in-out infinite;
+}

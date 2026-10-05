@@ -1,0 +1,23 @@
+.footer {
+  background: var(--color-lime);
+  color: var(--color-ink);
+  padding-bottom: clamp(32px, 5vw, 64px);
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: var(--border-strong);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+@media (max-width: 767px) {
+  .row {
+    font-size: 11px;
+    padding-top: 14px;
+  }
+  .reply {
+    display: none;
+  }
+}

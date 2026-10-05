@@ -1,0 +1,7 @@
+.title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
