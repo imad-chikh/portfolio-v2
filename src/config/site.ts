@@ -10,7 +10,7 @@ export const site = {
   /** Monogram shown in the logo tile */
   initials: 'ic',
   role: 'Mobile engineer — Flutter',
-  url: 'https://imadchikh.vercel.app',
+  url: 'https://imadchikh.com',
   email: 'imadedinchikh@gmail.com',
   bookingUrl: 'https://calendly.com/imadedinchikh/let-s-talk-30-min',
   cvUrl: '/cv/Imad-Eddine-Chikh-CV.pdf', // file lives in /public/cv

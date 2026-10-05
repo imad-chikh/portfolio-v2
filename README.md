@@ -56,7 +56,7 @@ src/
 - App screens: set `screens: ['/images/projects/solvgo-1.png', …]` on a project in `src/content/projects.ts`. The first two fill the phones on the project page, and all of them appear in its Screens gallery.
 - CV: replace `public/cv/Imad-Eddine-Chikh-CV.pdf` (or change `cvUrl` in `src/config/site.ts`).
 
-**Project pages.** Clicking a project card opens a full project page. Each block appears only when its data is filled in: `results` (big numbers), `caseStudy.problem/approach/outcome` (the story), `screens`, `features`, `tags`, `quote`, and `links` (App Store and Google Play URLs become store badges).
+**Project pages.** Clicking a project card opens a full project page at its own address, `/work/<slug>` (for example `/work/solvgo`). Each one is a separate page view in Vercel Analytics, can be linked to directly, and is listed in `/sitemap.xml`. The slug comes from `slug` in `projects.ts`. Each block appears only when its data is filled in: `results` (big numbers), `caseStudy.problem/approach/outcome` (the story), `screens`, `features`, `tags`, `quote`, and `links` (App Store and Google Play URLs become store badges).
 
 ## Still to fill in
 

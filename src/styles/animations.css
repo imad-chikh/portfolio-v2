@@ -1,32 +1,5 @@
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.35;
-  }
-}
-
-@keyframes ring {
-  0% {
-    transform: scale(1);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
-}
+/* Component keyframes (marquee, pulse, ring) live in their CSS modules —
+   CSS Modules scopes animation names, so global keyframes wouldn't match. */
 
 /* Scroll reveal — only hides content once JS has flagged the document,
    so the page is fully visible without JS. See <Reveal />. */

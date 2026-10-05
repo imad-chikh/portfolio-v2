@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { Project } from '@/lib/types';
+import { site } from '@/config/site';
 import { cn } from '@/lib/cn';
 import { ProjectTopBar } from './ProjectTopBar';
 import { ProjectHero } from './ProjectHero';
@@ -47,10 +48,17 @@ export function ProjectOverlay({ projects, index, onClose, onChange }: ProjectOv
     return () => cancelAnimationFrame(raf);
   }, [index]);
 
-  // Jump back to the top when switching project
+  // Jump back to the top and update the tab title when switching project
   useEffect(() => {
     scrollerRef.current?.scrollTo({ top: 0 });
   }, [current]);
+  useEffect(() => {
+    if (index === null) return;
+    document.title = `${projects[index].name} — ${site.name}`;
+    return () => {
+      document.title = site.seo.title;
+    };
+  }, [index, projects]);
 
   // Scroll lock, Escape to close, initial focus
   useEffect(() => {

@@ -44,3 +44,13 @@
     animation-duration: 22s;
   }
 }
+
+/* Keyframes live in the module so CSS Modules scopes the name consistently */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

@@ -1,16 +1,25 @@
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { projects, projectTones, workIntro } from '@/content/projects';
 import { SectionTitle } from '@/components/ui';
 import { pickTone } from '@/lib/tone';
 import { cn } from '@/lib/cn';
+import { projectPath, projectSlugFromPath } from '@/lib/routes';
 import { ProjectCard } from './ProjectCard';
 import { ProjectOverlay } from './ProjectPage';
 import styles from './Work.module.css';
 
 export function Work() {
-  const [selected, setSelected] = useState<number | null>(null);
+  // The open project lives in the URL (/work/<slug>), so each one is its own
+  // page view in analytics, can be linked to directly, and closes with Back.
+  const pathname = usePathname();
+  const slug = projectSlugFromPath(pathname);
+  const found = slug ? projects.findIndex((p) => p.slug === slug) : -1;
+  const selected = found >= 0 ? found : null;
+  // True when the project was opened from this page, so closing can just go Back.
+  const openedHere = useRef(false);
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: 1 | -1) => {
@@ -21,7 +30,22 @@ export function Work() {
     track.scrollBy({ left: dir * (card.offsetWidth + gap), behavior: 'smooth' });
   };
 
-  const close = useCallback(() => setSelected(null), []);
+  const open = (i: number) => {
+    openedHere.current = true;
+    window.history.pushState(null, '', projectPath(projects[i].slug));
+  };
+  // Switching project replaces the entry, so Back still returns to the site.
+  const change = useCallback((i: number) => {
+    window.history.replaceState(null, '', projectPath(projects[i].slug));
+  }, []);
+  const close = useCallback(() => {
+    if (openedHere.current) {
+      openedHere.current = false;
+      window.history.back();
+    } else {
+      window.history.pushState(null, '', '/');
+    }
+  }, []);
 
   return (
     <section id="work" className={styles.section}>
@@ -48,12 +72,12 @@ export function Work() {
             index={i}
             tone={pickTone(projectTones, i, project.tone)}
             selected={selected === i}
-            onSelect={() => setSelected(i)}
+            onSelect={() => open(i)}
           />
         ))}
       </div>
 
-      <ProjectOverlay projects={projects} index={selected} onClose={close} onChange={setSelected} />
+      <ProjectOverlay projects={projects} index={selected} onClose={close} onChange={change} />
     </section>
   );
 }
