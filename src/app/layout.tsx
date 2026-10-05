@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { site } from '@/config/site';
 import { fontVariables } from './fonts';
 import '@/styles/globals.css';
@@ -28,7 +29,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* Flags JS before first paint so scroll-reveal pre-states never flash or hide content without JS. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.setAttribute('data-js','')" }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
