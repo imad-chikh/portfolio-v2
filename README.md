@@ -60,5 +60,4 @@ src/
 
 ## Still to fill in
 
-- `about.ts`: the profile photo
 - `projects.ts`: years, screenshots, results, the problem behind each project, and client quotes

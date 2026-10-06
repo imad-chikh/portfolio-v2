@@ -119,6 +119,7 @@
   gap: 24px;
   padding-bottom: 80px;
   min-width: 0;
+  container-type: inline-size;
 }
 .heroPill {
   align-self: flex-start;
@@ -132,11 +133,12 @@
 .heroName {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: var(--fs-project-hero);
+  /* Shrinks so the longest word (--longest-word, in characters) always fits the column */
+  font-size: min(var(--fs-project-hero), calc(100cqi / (var(--longest-word, 6) * 0.62)));
   line-height: 0.85;
   letter-spacing: -0.055em;
   color: var(--color-lime);
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 .heroSummary {
   font-size: var(--fs-lead);

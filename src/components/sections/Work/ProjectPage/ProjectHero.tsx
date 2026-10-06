@@ -12,12 +12,13 @@ export function ProjectHero({ project, titleId }: { project: Project; titleId: s
     { label: 'Client', value: cs.client },
   ].filter((f) => f.value);
   const [screenA, screenB] = project.screens ?? [];
+  const longestWord = Math.max(...project.name.split(/\s+/).map((w) => w.length));
 
   return (
     <div className={cn('container', styles.hero)}>
       <div className={styles.heroText}>
         <span className={styles.heroPill}>{pill}</span>
-        <h2 id={titleId} className={styles.heroName}>
+        <h2 id={titleId} className={styles.heroName} style={{ ['--longest-word' as string]: longestWord }}>
           {project.name}
         </h2>
         {(cs.summary ?? project.tagline) && <p className={styles.heroSummary}>{cs.summary ?? project.tagline}</p>}

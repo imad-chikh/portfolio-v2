@@ -86,6 +86,13 @@ export const projects: Project[] = [
     slug: 'amar-hanoutek',
     name: '3amar 7anoutek',
     logo: '/images/projects/amar-hanoutek.png',
+    screens: [
+      '/images/projects/amar-hanoutek/home.webp',
+      '/images/projects/amar-hanoutek/product-details.webp',
+      '/images/projects/amar-hanoutek/cart.webp',
+      '/images/projects/amar-hanoutek/splash.webp',
+    ],
+    cover: '/images/projects/amar-hanoutek/splash.webp',
     tagline: 'Arabic-first e-commerce with secure checkout.',
     tags: ['Flutter', 'E-commerce', 'Arabic / RTL'],
     links: [
