@@ -9,7 +9,7 @@ export function CaseStudyTeaser() {
   if (!cs) return null;
   return (
     <section aria-label={cs.kicker} className={styles.section}>
-      <Reveal className={styles.wrap}>
+      <Reveal className="container">
         <Link href={caseStudyPath(cs.slug)} className={styles.card}>
           <span className={styles.text}>
             <span className={styles.meta}>
