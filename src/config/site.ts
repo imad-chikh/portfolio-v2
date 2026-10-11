@@ -12,6 +12,8 @@ export const site = {
   role: 'Mobile engineer — Flutter',
   url: 'https://imadchikh.com',
   email: 'imadedinchikh@gmail.com',
+  /** Shown on case study pages (as in the CV) */
+  phone: '+213 793 66 68 43',
   bookingUrl: 'https://calendly.com/imadedinchikh/let-s-talk-30-min',
   cvUrl: '/cv/Imad-Eddine-Chikh-CV.pdf', // file lives in /public/cv
   replyTime: 'Replies within 24 hours',

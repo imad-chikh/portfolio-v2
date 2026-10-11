@@ -1,0 +1,120 @@
+.section {
+  /* Sits right under the Work carousel, as in the design */
+  margin-top: calc(-1 * var(--section-y) + 8px);
+  padding-inline: 24px;
+}
+
+.wrap {
+  max-width: calc(var(--container-max) - 48px);
+  margin-inline: auto;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 48px 56px;
+  border-radius: var(--radius-lg);
+  background: var(--color-ink);
+  color: var(--text-on-dark);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.card:hover {
+  color: var(--text-on-dark);
+  transform: translateY(-4px);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.pill {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--color-lime);
+  color: var(--color-ink);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.status {
+  font-size: 14px;
+  color: var(--text-on-dark-label);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.1vw, 3.25rem); /* 32 → 52 */
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.accent {
+  color: var(--color-lime);
+}
+
+.more {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.arrow {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-lime);
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: transform var(--dur-fast);
+}
+.card:hover .arrow {
+  transform: translateX(3px);
+}
+
+@media (max-width: 899px) {
+  .card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 28px 20px;
+  }
+  .more {
+    justify-content: space-between;
+    font-size: 15px;
+  }
+  .arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    margin-top: -32px;
+    padding-inline: 10px;
+  }
+  .status {
+    display: none;
+  }
+}

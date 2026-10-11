@@ -1,0 +1,275 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.toggle {
+  display: inline-flex;
+  align-self: flex-start;
+  gap: 4px;
+  padding: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--color-forest);
+}
+
+.tab {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-on-dark);
+  white-space: nowrap;
+  transition:
+    background var(--dur-fast),
+    color var(--dur-fast);
+}
+.tab:hover:not(.tabOn) {
+  background: var(--color-forest-hover);
+}
+.tabOn {
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+.short {
+  display: none;
+}
+
+/* ---- Business view ------------------------------------------------------ */
+.benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.benefit {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 22px;
+  border-radius: var(--radius-md);
+  background: #1f2d25;
+  color: var(--text-on-dark);
+}
+.benefitLead {
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+
+.check {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-lime);
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+.benefitLead .check {
+  background: var(--color-ink);
+  color: var(--color-lime);
+}
+
+.benefitText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.benefitText strong {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.benefitText span {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-on-ink-muted);
+}
+.benefitLead .benefitText span {
+  color: var(--text-body);
+}
+
+/* ---- Tech view ---------------------------------------------------------- */
+.tech {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pipelineWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.caption {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-on-dark-label);
+}
+
+.pipeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 36px;
+}
+
+.stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 16px;
+  background: #1f2d25;
+  color: var(--text-on-dark);
+}
+.stage + .stage::before {
+  content: '→';
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-lime);
+  font-size: 20px;
+}
+.stage strong {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+}
+.stage span:last-child {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-on-ink-muted);
+}
+.num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-on-dark-label);
+}
+.stageLead {
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+.stageLead .num,
+.stageLead span:last-child {
+  color: var(--text-body);
+}
+
+.specs {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 32px;
+}
+.spec {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-on-dark);
+}
+.spec dt {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-on-dark-label);
+  padding-top: 2px;
+}
+.spec dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--text-on-dark-soft);
+}
+
+@media (max-width: 899px) {
+  .benefits,
+  .specs {
+    grid-template-columns: 1fr;
+  }
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .stage + .stage::before {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .root {
+    gap: 24px;
+  }
+  .long {
+    display: none;
+  }
+  .short {
+    display: inline;
+  }
+  .tab {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+  .benefits {
+    gap: 10px;
+  }
+  .benefit {
+    padding: 16px;
+  }
+  .check {
+    width: 28px;
+    height: 28px;
+  }
+  .benefitText strong {
+    font-size: 18px;
+  }
+  .benefitText span {
+    font-size: 14px;
+  }
+  .tech {
+    gap: 18px;
+  }
+  .caption {
+    font-size: 11px;
+  }
+  .pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .stage strong {
+    font-size: 17px;
+  }
+  .stage + .stage::before {
+    display: block;
+    left: 50%;
+    top: -28px;
+    transform: translateX(-50%) rotate(90deg);
+  }
+  .spec {
+    grid-template-columns: 120px 1fr;
+  }
+  .spec dt {
+    font-size: 11px;
+  }
+  .spec dd {
+    font-size: 14px;
+  }
+}
