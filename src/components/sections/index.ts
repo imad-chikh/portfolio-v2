@@ -4,6 +4,7 @@ import { Hero } from './Hero/Hero';
 import { Marquee } from './Marquee/Marquee';
 import { Services } from './Services/Services';
 import { Work } from './Work/Work';
+import { CaseStudyTeaser } from './CaseStudyTeaser/CaseStudyTeaser';
 import { Experience } from './Experience/Experience';
 import { About } from './About/About';
 import { Contact } from './Contact/Contact';
@@ -14,6 +15,7 @@ export const sectionComponents: Record<SectionId, ComponentType> = {
   marquee: Marquee,
   services: Services,
   work: Work,
+  caseStudy: CaseStudyTeaser,
   experience: Experience,
   about: About,
   contact: Contact,

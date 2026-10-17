@@ -8,3 +8,6 @@ export const projectSlugFromPath = (pathname: string | null) => {
   const match = pathname?.match(/^\/work\/([^/]+)\/?$/);
   return match ? decodeURIComponent(match[1]) : null;
 };
+
+/** Standalone engineering case studies (/case-study/<slug>). */
+export const caseStudyPath = (slug: string) => `/case-study/${slug}`;

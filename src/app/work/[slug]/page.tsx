@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { HomePage } from '@/components/HomePage';
 import { site } from '@/config/site';
+import { isProduction } from '@/config/env';
 import { projects } from '@/content/projects';
 import { projectPath } from '@/lib/routes';
 
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     description,
     alternates: { canonical: projectPath(slug) },
     openGraph: { title, description, url: projectPath(slug), siteName: site.name, type: 'article' },
+    robots: isProduction ? undefined : { index: false, follow: false },
   };
 }
 

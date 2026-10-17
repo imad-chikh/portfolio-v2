@@ -11,6 +11,7 @@ export type SectionId =
   | 'marquee'
   | 'services'
   | 'work'
+  | 'caseStudy'
   | 'experience'
   | 'about'
   | 'contact';
@@ -26,6 +27,7 @@ export const sections: SectionConfig[] = [
   { id: 'marquee', enabled: true },
   { id: 'services', enabled: true, nav: 'Services' },
   { id: 'work', enabled: true, nav: 'Work' },
+  { id: 'caseStudy', enabled: true },
   { id: 'experience', enabled: true, nav: 'Experience' },
   { id: 'about', enabled: true, nav: 'About' },
   { id: 'contact', enabled: true },

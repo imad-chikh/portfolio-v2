@@ -33,7 +33,7 @@ src/
 │   ├── sections.ts    section ORDER + enabled flags + nav labels (the nav is derived from this)
 │   └── env.ts         isProduction (VERCEL_ENV === 'production')
 ├── content/           ALL copy and data, one file per section (components hold no copy)
-│   hero.ts services.ts projects.ts experience.ts about.ts contact.ts stack.ts
+│   hero.ts services.ts projects.ts experience.ts about.ts contact.ts stack.ts caseStudies.ts
 ├── styles/
 │   ├── tokens.css     THE theme: colors, fonts, fluid type scale, radii, motion, and "tones"
 │   ├── animations.css scroll-reveal styles only (see the keyframes gotcha below)
@@ -42,10 +42,12 @@ src/
 │   ├── layout.tsx     fonts, metadata, robots (noindex off-production), <Analytics/>, <SpeedInsights/>
 │   ├── page.tsx       → <HomePage/>
 │   ├── work/[slug]/page.tsx  → the same <HomePage/>; the Work section opens that project (SSG, per-project metadata)
+│   ├── case-study/[slug]/page.tsx → standalone engineering case study page (<CaseStudyPage/>)
 │   ├── sitemap.ts     / plus /work/<slug> for each project
 │   └── fonts.ts       Bricolage Grotesque (display), Instrument Sans (body), JetBrains Mono
 ├── components/
 │   ├── HomePage.tsx   Header + sections rendered from config/sections.ts + Footer
+│   ├── CaseStudy/     CaseStudyPage + AudienceViews (business owners / tech leads toggle)
 │   ├── layout/        Header (with mobile menu below 900px), Footer
 │   ├── sections/      one folder per section; index.ts maps section id → component
 │   │   Hero, Marquee, Services, Work (+ ProjectCard, ProjectPage/*), Experience (+ TimelineItem), About (+ PhotoFrame), Contact (+ ContactCard, CopyEmailCard)
@@ -71,6 +73,7 @@ src/
   - Opening uses `history.pushState`, switching uses `replaceState`, and closing uses `history.back()` if the project was opened in-page, or `pushState('/')` if it was a direct link.
   - Next.js syncs `usePathname` with native history, so **each project is its own page view in Vercel Analytics**.
   - The rendered page doesn't remount, and scroll position is kept.
+- **Engineering case studies.** NDA work with no screens or client name lives in `content/caseStudies.ts`, not `projects.ts`. Each gets its own page at `/case-study/<slug>` (design: `Case Study - Location Engine.dc.html`). The home page shows a teaser card for `featuredCaseStudy` right under the Work carousel (section id `caseStudy`). The CTA shows `site.phone`.
 - **Store badges.** `StoreBadge` detects `apps.apple.com` and `play.google.com` URLs. `note` overrides the small caption (used for "FindEat Business on the").
 - **Analytics.** Page views only. Button clicks are NOT tracked: Vercel custom events (`track()`) are visible only on the Pro plan, and the owner is on Hobby. The owner was told; adding click tracking would need Pro, or another tool such as Umami or PostHog.
 - **SEO.** Per-project metadata and canonical links, `sitemap.xml`, and `robots: noindex,nofollow` whenever `VERCEL_ENV !== 'production'`.
